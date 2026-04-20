@@ -1,39 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Renze Aguirre | Portfolio</title>
-  <style>
-    body {
-      font-family: 'Times New Roman', serif;
-      background-color: #fff;
-      color: #000;
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  
+  <style>        
+    :root {
+      --neon-green: #00ff41;
+      --dark-green: #003b00;
+      --bg-black: #0a0a0a;
+      --text-white: #ffffff;
+    }
+
+    body { 
+      background-color: var(--bg-black);
+      color: var(--text-white);
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
+      /* Live Animated Background */
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+      background-size: 100% 100%, 35px 35px, 35px 35px;
+      animation: gridMove 25s linear infinite;
+    }
+
+    @keyframes gridMove {
+      from { background-position: 0 0, 0 0, 0 0; }
+      to { background-position: 0 0, 0 350px, 0 350px; }
     }
 
     header {
       text-align: center;
-      padding: 60px 20px 20px;
+      background: rgba(0, 0, 0, 0.9);
+      color: var(--neon-green);
+      padding: 80px 20px 40px;
+      border-bottom: 2px solid var(--neon-green);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
     }
 
     header h1 {
-      font-size: 36px;
+      font-size: 48px;
       margin-bottom: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--neon-green);
     }
 
     header p {
-      color: #444;
       font-size: 18px;
+      color: var(--text-white);
+      opacity: 0.8;
+      letter-spacing: 2px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      background-color: #fff;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
+      background-color: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid var(--neon-green);
       padding: 15px 0;
       position: sticky;
       top: 0;
@@ -42,75 +73,179 @@
 
     nav a {
       text-decoration: none;
-      color: #000;
+      color: var(--text-white);
       margin: 0 25px;
-      font-size: 16px;
-      position: relative;
-      transition: color 0.3s ease;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: 0.3s;
     }
 
-    nav a::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 2px;
-      background: #000;
-      transition: width 0.3s;
-      margin: 0 auto;
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
+    nav a:hover, nav a.active {
+      color: var(--neon-green);
+      text-shadow: 0 0 8px var(--neon-green);
     }
 
     section {
       display: none;
-      text-align: center;
-      max-width: 800px;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      max-width: 850px;
       margin: 60px auto;
-      padding: 40px 20px;
+      padding: 50px 30px;
+      border-radius: 8px;
+      border: 1px solid var(--neon-green);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+      text-align: center;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
     section.active {
       display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      font-size: 32px;
+      color: var(--neon-green);
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--neon-green);
+      display: inline-block;
+      padding-bottom: 5px;
     }
 
     p, li {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #333;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-white);
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+    ul { list-style: none; padding: 0; }
 
     li {
-      margin: 10px 0;
+      margin: 12px 0;
+      background: rgba(0, 255, 65, 0.05);
+      border: 1px solid rgba(0, 255, 65, 0.2);
+      border-radius: 4px;
+      padding: 12px;
+      transition: 0.3s;
+    }
+
+    li:hover {
+      background: rgba(0, 255, 65, 0.15);
+      border-color: var(--neon-green);
+    }
+
+    img {
+      border: 2px solid var(--neon-green);
+      margin-top: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      background: #000;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--neon-green);
+    }
+
+    iframe {
+      border: 1px solid var(--neon-green);
+      margin-top: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    }
+
+    .cv-button {
+      display: inline-block;
+      margin: 30px 0;
+      padding: 12px 30px;
+      border: 2px solid var(--neon-green);
+      color: var(--neon-green);
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
+
+    .cv-button:hover {
+      background: var(--neon-green);
+      color: black;
+      box-shadow: 0 0 20px var(--neon-green);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 40px;
+      background-color: #000;
+      color: var(--neon-green);
       font-size: 14px;
-      color: #333;
-      border-top: 1px solid #000;
-      margin-top: 40px;
+      border-top: 2px solid var(--neon-green);
+      letter-spacing: 2px;
     }
+
+    /* Chatbot Styling */
+    .chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 280px;
+      background: #000;
+      border: 1px solid var(--neon-green);
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .chat-header {
+      background: var(--neon-green);
+      color: black;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .chat-body {
+      height: 200px;
+      overflow-y: auto;
+      padding: 15px;
+      background: #050505;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      color: var(--neon-green);
+    }
+
+    .chat-body p { margin: 8px 0; text-align: left;}
+
+    #chatInput {
+      width: 100%;
+      background: #000;
+      border: none;
+      border-top: 1px solid var(--neon-green);
+      color: var(--neon-green);
+      padding: 12px;
+      outline: none;
+      box-sizing: border-box;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    a { color: var(--neon-green); text-decoration: none; transition: 0.3s; }
+    a:hover { text-decoration: underline; text-shadow: 0 0 5px var(--neon-green); }
+
   </style>
 </head>
 <body>
 
   <header>
     <h1>Renze Aguirre</h1>
-    <p>Welcome to my Portfolio</p>
+    <p>> Welcome to my Digital Portfolio_</p>
   </header>
 
   <nav>
@@ -123,22 +258,45 @@
 
   <section id="home" class="active">
     <h2>Home</h2>
-    <p>Hello! I’m <b>Renze Aguirre</b>, an aspiring IT professional who loves clean, simple, and creative designs.  
+    <p>Hello! I’m <b>Renze Aguirre</b>, an aspiring IT Student who loves clean, simple, and creative designs.<br>
     Explore my portfolio to know more about my skills and works.</p>
+    <img src="renz.png" alt="My Profile" width="150" height="150">
+    <br>
+    <a href="https://drive.google.com/file/d/1ARwgpgDAKNY4DP9C-RSfyg3tCZcAR2BV/view" target="_blank" class="cv-button">
+      DOWNLOAD CV
+    </a>
   </section>
 
   <section id="about">
     <h2>About</h2>
-    <p>I am a student passionate about technology, design, and innovation.  
+    <p>I am a student passionate about technology, design, and innovation.<br>
     I enjoy creating websites and projects that reflect simplicity and creativity.</p>
+    <img src="about.jpg" alt="About Image" width="150" height="150">
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <p>Some of my sample works:</p>
-    <p>• Personal Portfolio Website<br>
-       • Online Store Design<br>
-       • Graphic Poster and Video Editing</p>
+    <p><b>EVAD ABAZER</b></p>
+    <img src="evad.jpeg" alt="Evad Abazer" width="150" height="150"><br>
+
+    <p><b>Lay Out Of Glucometer</b></p>
+    <img src="gluco.jpg" alt="Lay out Of Glucometer" width="150" height="150"><br>
+
+    <p><b>WordPress Portfolio</b></p>
+    <img src="wordpress.jpg" alt="WordPress Portfolio" width="150" height="150"><br>
+    
+    <p><b>Certificates</b></p>
+    <a href="https://maquetisoy5-gnvsr.wordpress.com/wp-content/uploads/2026/04/messenger_creation_57a590ef-f480-4278-8760-0ba88b30c2b28218794626847686819.jpeg?w=655" target="_blank">View Certificate 1</a><br>
+    <a href="https://maquetisoy5-gnvsr.wordpress.com/wp-content/uploads/2026/04/img_20260420_134229_8513699888845530807882-1.jpeg?w=922" target="_blank">View Certificate 2</a><br>
+    <a href="https://maquetisoy5-gnvsr.wordpress.com/wp-content/uploads/2026/04/img_20260420_134223_3037804463709947046293.jpeg?w=922" target="_blank">View Certificate 3</a>
+
+    <h2 style="margin-top: 50px;">Tutorials</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+      <iframe width="250" height="200" src="https://www.youtube.com/embed/a9u2yZvsqHA" title="GitHub Tutorial" frameborder="0" allowfullscreen></iframe>
+      <iframe width="250" height="200" src="https://www.youtube.com/embed/jQ1sfKIl50E" title="Figma Tutorial" frameborder="0" allowfullscreen></iframe>
+      <iframe width="250" height="200" src="https://www.youtube.com/embed/zd5_MN-6kqs" title="WordPress Tutorial" frameborder="0" allowfullscreen></iframe>
+    </div>
   </section>
 
   <section id="skills">
@@ -153,33 +311,66 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p><b>Email:</b> renze.aguirre@example.com</p>
-    <p><b>Phone:</b> 0994-867-xxxx</p>
+    <p><b>Email:</b> renze.aguirre2@gmail.com</p>
+    <p><b>Phone:</b> 0994-867-3654</p>
   </section>
 
   <footer>
-    © 2025 Renze Aguirre | All Rights Reserved
+    © 2025 RENZE AGUIRRE | INITIALIZING SUCCESS_
   </footer>
 
+  <div class="chatbot">
+    <div class="chat-header">Terminal Access 👋</div>
+    <div class="chat-body" id="chatBody">
+      <p style="color: #666;">> System online...</p>
+    </div>
+    <input type="text" id="chatInput" placeholder="Enter query..." onkeypress="handleChat(event)">
+  </div>
+
   <script>
-    // Function to show only one section at a time
     function showSection(sectionId) {
-      // Hide all sections
       const sections = document.querySelectorAll("section");
       sections.forEach(section => section.classList.remove("active"));
 
-      // Remove 'active' class from all nav links
       const links = document.querySelectorAll("nav a");
       links.forEach(link => link.classList.remove("active"));
 
-      // Show the selected section
       document.getElementById(sectionId).classList.add("active");
-
-      // Highlight active link
       const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
       activeLink.classList.add("active");
     }
-  </script>
 
+    function handleChat(e) {
+      if (e.key === "Enter") {
+        let input = document.getElementById("chatInput");
+        let message = input.value.toLowerCase();
+        let chatBody = document.getElementById("chatBody");
+
+        chatBody.innerHTML += "<p style='color:white'>> " + input.value + "</p>";
+
+        let reply = "Query not recognized.";
+
+        if (message.includes("name")) {
+          reply = "The entity is Renze Aguirre.";
+        } 
+        else if (message.includes("skills")) {
+          reply = "Data found: HTML, CSS, JavaScript, Graphic Design, Video Editing.";
+        } 
+        else if (message.includes("projects")) {
+          reply = "Retrieving: EVAD ABAZER, Glucometer Layout, WordPress Portfolio.";
+        } 
+        else if (message.includes("contact")) {
+          reply = "Mail: renze.aguirre2@gmail.com | Phone: 0994-867-3654";
+        } 
+        else if (message.includes("who are you")) {
+          reply = "Aspiring IT student passionate about digital design.";
+        }
+
+        chatBody.innerHTML += "<p>> " + reply + "</p>";
+        chatBody.scrollTop = chatBody.scrollHeight;
+        input.value = "";
+      }
+    }
+  </script>
 </body>
 </html>
